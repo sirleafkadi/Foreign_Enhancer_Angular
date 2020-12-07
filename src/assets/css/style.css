@@ -367,9 +367,9 @@ ol {
 
 .header__top__right__language ul {
 	background: #222222;
-	width: 100px;
-	text-align: left;
-	padding: 5px 0;
+	width: 200px;
+	text-align: center;
+	padding: 5px 5%;
 	position: absolute;
 	left: 0;
 	top: 43px;
@@ -381,10 +381,18 @@ ol {
 	-ms-transition: all, 0.3s;
 	-o-transition: all, 0.3s;
 	transition: all, 0.3s;
+	border-radius: 10px;
 }
 
 .header__top__right__language ul li {
 	list-style: none;
+	max-width:90%;
+	padding: 5% 0;
+
+}
+
+.header__top__right__language ul li a:hover {
+	opacity: .3;
 }
 
 .header__top__right__language ul li a {

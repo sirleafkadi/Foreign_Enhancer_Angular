@@ -1,0 +1,31 @@
+<div class="wrapper fadeInDown" style='margin-top:-5%'>
+    <div id="formContent">
+      <!-- Tabs Titles -->
+      <!-- Icon -->
+      <div class="fadeIn first">
+        <p><i class="fas fa-user-friends"></i> <span></span> Login</p>
+      </div>
+  
+      <!-- Login Form -->
+      <form [formGroup]='formFer' (ngSubmit)='login()' novalidate>
+        <p [className]='color' style=' max-width:80%; margin-bottom:1%; display:block; margin: 0 auto; text-align:center' *ngIf='msg'>{{msg}}</p>
+        <input [className]='color' type="text" id="login" class="fadeIn second" name="login" placeholder="login" formControlName='email'>
+        <div style="display:inline" class="form-control-feed-back"  *ngIf="formFer.get('email').touched && formFer.get('email').invalid">
+        <p style="text-align:center; color:red" *ngIf="formFer.get('email').errors.required">Email is required</p>
+        <p style='text-align:center; color:red' *ngIf="formFer.get('email').errors.pattern">Invalid Email</p>
+        </div>
+
+       <input type="text" id="password" class="fadeIn third" name="login" placeholder="password"  formControlName='password'>
+       <div style="display:inline" class="form-control-feed-back"  *ngIf="formFer.get('password').touched && formFer.get('password').invalid">
+        <p style="text-align:center; color:red" *ngIf="formFer.get('password').errors.required">Password is Required</p>
+      </div>
+      <input type="submit" [disabled]='formFer.invalid' class="fadeIn fourth" value="Log In">
+      </form>
+  
+      <!-- Remind Passowrd -->
+      <div id="formFooter">
+        <a class="underlineHover" href="#">Forgot Password?</a>
+      </div>
+  
+    </div>
+  </div>
