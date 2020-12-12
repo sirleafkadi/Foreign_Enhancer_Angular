@@ -14,6 +14,16 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { CartComponent } from './cart/cart.component';
 import { SectionOneComponent } from './section-one/section-one.component';
+import { ProductComponent } from './product/product.component';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {MatProgressBarModule, } from '@angular/material/progress-bar';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { LoaderComponent } from './loader/loader.component';
+import { FooterComponent } from './footer/footer.component';
+import {NgxPaginationModule} from 'ngx-pagination';
+
+
+
 
 @NgModule({
   declarations: [
@@ -24,7 +34,10 @@ import { SectionOneComponent } from './section-one/section-one.component';
     LoginComponent,
     RegisterComponent,
     CartComponent,
-    SectionOneComponent
+    SectionOneComponent,
+    ProductComponent,
+    LoaderComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
@@ -32,6 +45,10 @@ import { SectionOneComponent } from './section-one/section-one.component';
     HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
+    MatProgressBarModule,
+    MatProgressSpinnerModule,
+    BrowserAnimationsModule,
+    NgxPaginationModule,
     JwtModule.forRoot({
       config: {
       

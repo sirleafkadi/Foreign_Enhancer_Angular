@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { HttpService } from '../http.service';
-import * as $ from 'jquery';
+import { ShareService } from '../share.service';
+
 
 @Component({
   selector: 'section-one',
@@ -10,44 +10,31 @@ import * as $ from 'jquery';
 })
 export class SectionOneComponent implements OnInit {
 
-  constructor(private http: HttpService) { }
+  constructor(private http: HttpService, private share:ShareService) { this.cat='All departments'; }
   ray:any;
  category:Array<any>;
+ cat:any;
+
 
   ngOnInit(): void {
+    
     this.all_category();
-
-    $(document).ready(function(){
-     $('#price').click(function(){
-        $('#show').text( $(this).val() );
-     });
-    });
-
-
-
   }
-
+/////Loading all categories
   async all_category(){
      await this.http.get_category();
     this.ray = await this.http.category;
     this.category=this.ray;
-     
-
-      //   (row)=>{
-      //     this.ray= <any>row;
-      //     for(var i =0; i<this.ray[0].length; i++){
-            
-      //         if(this.ray[0][i].table_name=='woman'){
-      //           console.log(this.ray[0][i].name);
-
-      //         }
-      //     }
-
-      //   }
-      // ).catch( (err)=>{
-      //   console.log(err);
-      // } );
+    
   }
+
+
+categor(cat){
+  this
+  this.share.cur_cat=cat;
+}
+
+
 
 
 

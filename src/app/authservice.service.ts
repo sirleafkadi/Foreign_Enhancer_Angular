@@ -13,6 +13,7 @@ export class AuthserviceService {
   customer : Array<Customer>;
   public user:any;
   public status:any;
+  public islogin:boolean;
   constructor( public jwt: JwtHelperService, private http:HttpClient, private router:Router ) { this.status=null;}
 
   isAuthenticated(){
@@ -29,20 +30,21 @@ export class AuthserviceService {
         localStorage.setItem('token', JSON.stringify(token));
         token = this.jwt.decodeToken(JSON.stringify(token));
         this.user= token;
-       
+        this.islogin=true;
       setTimeout(() => {
         this.router.navigate(['home']);
       }, 2000);
 
-    }).catch((err) => this.status=err.error);
+    }).catch((err) =>{ this.status=err.error; this.islogin=false; }  );
   }
 
   _islogin(){
-    if(this.isAuthenticated()){  localStorage.removeItem('token'); return false; }
+    if(this.isAuthenticated()){  localStorage.removeItem('token'); this.islogin=false;  return false; }
    else{
     const real_token = localStorage.getItem("token");
     const token = this.jwt.decodeToken(JSON.stringify(real_token));
     this.user= token;
+    
     return true;
    }
 }

@@ -11,8 +11,8 @@
 }
 
 img{
-    max-width: 80% !important;
-    max-height: 480px;
+    max-width: 100% !important;
+    max-height: 300px;
     display: block;
     margin: 0 auto;
 }
@@ -24,9 +24,7 @@ img{
     right:45%;
 }
 
-#first:hover{
 
-}
 
 .filter{
     display: inline; 
@@ -41,4 +39,8 @@ img{
 
 span{
     padding-right: 5px;
+}
+
+a{
+    cursor: pointer;
 }
