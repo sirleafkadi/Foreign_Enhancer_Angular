@@ -5,12 +5,14 @@ import { CartComponent } from './cart/cart.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { ProductDetailsComponent } from './product-details/product-details.component';
 import { ProductComponent } from './product/product.component';
 
 const routes: Routes = [
   {path:'', redirectTo:'home', pathMatch:'full'},
   {path:'cart', component:CartComponent, canActivate:[AuthguardService]},
   {path:'home', component:HomeComponent},
+  {path:'details/:id', component:ProductDetailsComponent},
   {path:'login', component:LoginComponent},
   {path:'**', component:NotFoundComponent}
 

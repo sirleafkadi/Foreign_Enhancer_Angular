@@ -10,11 +10,16 @@
     color:rgb(194, 246, 117);
 }
 
+.featured__item__pic{
+   background-color: rgb(233,236,239);
+   border-radius: 5px;
+}
+
 img{
     display: block;
-    margin: 0 auto;
-    max-width: 80% !important;
-    max-height: 40px;
+    margin: 17% auto;
+    max-width: 190px !important;
+    max-height: 165px !important;
 }
 
 #shop{
@@ -75,3 +80,10 @@ span{
     color:green;
 
   }
+
+
+  
+.high_light:hover{
+    cursor: pointer;
+	opacity: .7;
+}

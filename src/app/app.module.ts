@@ -21,6 +21,8 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { LoaderComponent } from './loader/loader.component';
 import { FooterComponent } from './footer/footer.component';
 import {NgxPaginationModule} from 'ngx-pagination';
+import { ProductDetailsComponent } from './product-details/product-details.component';
+import { NgxImageZoomModule } from 'ngx-image-zoom';
 
 
 
@@ -37,7 +39,8 @@ import {NgxPaginationModule} from 'ngx-pagination';
     SectionOneComponent,
     ProductComponent,
     LoaderComponent,
-    FooterComponent
+    FooterComponent,
+    ProductDetailsComponent
   ],
   imports: [
     BrowserModule,
@@ -49,6 +52,7 @@ import {NgxPaginationModule} from 'ngx-pagination';
     MatProgressSpinnerModule,
     BrowserAnimationsModule,
     NgxPaginationModule,
+    NgxImageZoomModule, // <-- Add this line
     JwtModule.forRoot({
       config: {
       

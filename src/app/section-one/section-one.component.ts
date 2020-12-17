@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { HttpService } from '../http.service';
 import { ShareService } from '../share.service';
 
@@ -10,14 +10,13 @@ import { ShareService } from '../share.service';
 })
 export class SectionOneComponent implements OnInit {
 
-  constructor(private http: HttpService, private share:ShareService) { this.cat='All departments'; }
+ cur_cat:String;
+
+  constructor(private http: HttpService, private share:ShareService) { this.cur_cat='All departments'; }
   ray:any;
  category:Array<any>;
- cat:any;
-
-
-  ngOnInit(): void {
-    
+ 
+ngOnInit(): void {
     this.all_category();
   }
 /////Loading all categories
@@ -25,13 +24,11 @@ export class SectionOneComponent implements OnInit {
      await this.http.get_category();
     this.ray = await this.http.category;
     this.category=this.ray;
-    
-  }
+}
 
 
-categor(cat){
-  this
-  this.share.cur_cat=cat;
+cur_category(cat){
+  this.cur_cat=cat;
 }
 
 
