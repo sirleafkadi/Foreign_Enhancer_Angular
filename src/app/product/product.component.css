@@ -11,15 +11,16 @@
 }
 
 .featured__item__pic{
-   background-color: rgb(233,236,239);
    border-radius: 5px;
+   max-height: 200px;
 }
+
 
 img{
     display: block;
     margin: 17% auto;
-    max-width: 190px !important;
-    max-height: 165px !important;
+    max-width: 200px !important;
+    max-height: 200px !important;
 }
 
 #shop{
@@ -29,7 +30,7 @@ img{
     right:45%;
 }
 
-li:hover{
+.filter_label:hover{
     color:rgb(194, 246, 117);
 }
 
@@ -54,16 +55,23 @@ span{
    top:100%;
    left: 50%;
    right: 50%;
-
-
-    
-    
-   
-    /* background-color:rgb(0, 0, 0); */
+ /* background-color:rgb(0, 0, 0); */
     z-index:    1000;
-    
-  
-  }
+}
+
+.msg{
+    display: block;
+}
+
+.passed{
+    font-weight: bold;
+    color:green;
+}
+
+.fail{
+    font-weight: bold;
+    color:rgb(163, 3, 3)
+}
   .hide{
     visibility: hidden;
     transition: all .1s ease;
@@ -86,4 +94,46 @@ span{
 .high_light:hover{
     cursor: pointer;
 	opacity: .7;
+}
+
+.product_row{
+    margin: -150px 0 0 0 ;
+    position: relative;
+    left: 28%;
+    right:20%;
+    max-width: 70%;
+}
+
+.featured__item:hover{
+    opacity: .7;
+}
+
+
+select{
+    width:80%;
+    height: 25px ;
+   }
+
+.cat_list:hover{
+background-color: red !important;
+   }
+
+.dropdown{
+       display: flex;
+       margin: 10px 0;
+}
+.filter_l{
+    margin-left:5px;
+}
+
+.price{
+    max-width: 50% ;
+    display:inline;
+}
+.update_filter:hover{
+    opacity: .6;
+}
+
+#reset{
+background-color: grey !important;
 }

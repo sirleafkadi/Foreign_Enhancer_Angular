@@ -1,8 +1,104 @@
- <!-- Featured Section Begin -->
- <section class="featured spad">
+<app-nav  [total]='total' ></app-nav>
+<section  style=' margin-bottom: 0; max-height: 55%;  ' class="hero container">
+    <div style='max-height: 500px;' class="container">
+        <div class="row">
+            <div class="col-lg-3">
+                <div class="hero__categories">
+                    <div class="hero__categories__all">
+                        <i class="fa fa-bars"></i>
+                        <span>Menu</span>
+                    </div>
+                    <ul>
+                        <p></p>
+                        <span class='filter_label'>Category</span>
+
+                        <li > 
+                           <div   class="dropdown">
+                                 <select #cat name="" id="category" (change)="set_cat(cat.value)" >
+                                    <option  value="">Select</option>
+                                    <option *ngFor='let cat of category' value="{{cat.id}}" ><a class='cat_list' >{{cat.name}}</a> </option>
+                                </select>
+                            </div>
+                        </li>
+                        <p></p>
+                        <span class='filter_label'>Gender</span>
+
+                        <li> 
+                            <div>
+                            <input  type="radio" name='gender' value='1' (click)="set_gender(1)" ><span class='filter_l gender'>Men</span>
+                            <input  type="radio" name='gender' value='2' (click)="set_gender(2)" ><span class='filter_l gender'>Woman</span>
+                            <input  type="radio" name='gender' value='3' (click)="set_gender(3)"><span class='filter_l gender'>Unisex</span>
+                            </div>
+                        </li>
+                        <p></p>
+                        <span  style='margin-top: 5px;' class='filter_label'>Price Range</span>
+
+                        <li style='margin-top: 5px;'>
+                            <input #min class='price'  placeholder="Min" type="text" (change)="set_min_price(min.value)">
+                            <input #max class='price'  placeholder="Max" type="text" (change)="set_max_price(max.value)">
+                        </li>
+                        <p></p>
+                        <span>Sort</span>
+                        <li> 
+                            <div>
+                            <input type="radio" name='sort' value='men' (click)="set_sort('asc')"><span class='filter_l sort'>A-Z</span>
+                            <input type="radio" name='sort' value='woman' (click)="set_sort('desc')"><span class='filter_l'>Z-A</span>
+                            </div>
+                        </li>
+                        <p></p>
+                        <span>New</span>
+                        <li> 
+                            <div>
+                            <input type="radio" name='latest' value='reset'><span class='filter_l'>Default</span>
+                            <input type="radio" name='latest' value='unisex'><span class='filter_l'>Latest</span>
+                            </div>
+
+                        </li>
+                        <p></p>
+                        <div style='display:flex; justify-content: space-between;'>
+                            <button type='button' id='reset' type='button' class='update_filter'  style='background-color: grey !important; color:white' >Reset</button>
+                            <button type='button' id='update'  style='background-color: rgb(127,173,57); color:white' class='update_filter' (click)='filter_update()'>Update</button>
+                        </div>
+                     
+
+                    </ul>
+                    
+                </div>
+            </div>
+            <div class="col-lg-9">
+                <div class="hero__search">
+                    <div class="hero__search__form">
+                        <form action="#">
+                            <div class="hero__search__categories">
+                                All Categories
+                                <span class="arrow_carrot-down"></span>
+                            </div>
+                            <input class='input_box' type="text" placeholder="What do you need?">
+                            <button type="submit" class="site-btn">SEARCH</button>
+                        </form>
+                    </div>
+                    <div class="hero__search__phone">
+                        <div class="hero__search__phone__icon">
+                            <i class="fa fa-phone"></i>
+                        </div>
+                        <div class="hero__search__phone__text">
+                            <h5>+65 11.188.888</h5>
+                            <span>support 24/7 time</span>
+                        </div>
+                    </div>
+                </div>
+           
+
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Hero Section End -->
+
+<section style='margin-top:-14%' class="featured spad">
     <div  class="container">
         <div  class="row">
-            <div class="col-lg-12">
+            <!-- <div class="col-lg-12">
                
                 <div class="section-title">
                     <h2>{{pro_cur_cat}}</h2>
@@ -25,17 +121,18 @@
                     </ul>
                     
                 </div>
-            </div>
-        </div>
-        <div  [style]='show' class="row featured__filter " >
+            </div> -->
+        </div> 
+         <div id='pro'  [style]='show' class="row featured__filter product_row " >
         
-            <div data-aos="fade-up"  class="col-lg-3 col-md-4 col-sm-6 mix  fastfood vegetables" *ngFor='let list of products | paginate:config'>
-                <div class="featured__item"  >
-                    <div  [routerLink]="['/details', list._id]" class="featured__item__pic set-bg">
-                       <a  > <img  src="assets/img/products/{{list.main_img}}.jpg" alt=""> </a>
-                        <ul class="featured__item__pic__hover">
-                            <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                            <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
+            <div  class="col-lg-4 col-md-4 col-sm-6 mix  fastfood vegetables" *ngFor='let list of products | paginate:config'>
+                <div  style='border:1px solid green' class="featured__item"  >
+                    <div  class="featured__item__pic set-bg">
+                       <a> <img   [routerLink]="['/details', list._id]" src="assets/img/products/{{list.main_img}}.jpg" alt=""> </a>
+                        <ul style='margin: -10% 0' class="featured__item__pic__hover">
+                            <medium style='background-color: rgb(233,236,239)'  class='msg {{color}}'>{{msg}}</medium>
+                            <li title='Wish list'><a ><i class="fa fa-heart"></i></a></li>
+                            <li title='Cart'><a  (click)='add(list)'  ><i class="fa fa-shopping-cart"></i></a></li>
                         </ul>
                     </div>
                     <div class="featured__item__text">
@@ -47,14 +144,8 @@
         </div>
     </div>
 </section>
-<!-- Featured Section End -->
-
-<pagination-controls data-aos="fade-up" (pageChange)='page_change($event)'></pagination-controls>
-
-
- 
- <!-- Featured Section Begin -->
- <section  data-aos="fade-up"  style=' margin-top: -5%;' class="featured spad">
+<pagination-controls  (pageChange)='page_change($event)'></pagination-controls>
+<section   style=' margin-top: -5%;' class="featured spad">
     <div class="container">
         <div class="row">
             <div  class=" high_light  col-lg-12">
@@ -69,12 +160,12 @@
                     <div class="featured__item__pic set-bg">
                         <img class=' high_light' style='border-radius: 5px; max-width: inherit; max-height: inherit;' src="https://www.healthscamreviews.com/wp-content/uploads/2016/07/Curvy-Bust-Review.jpg" alt="">
                         <ul class="featured__item__pic__hover">
-                            <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                            <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
+                            <li><a ><i class="fa fa-heart"></i></a></li>
+                            <li><a ><i class="fa fa-shopping-cart"></i></a></li>
                         </ul>
                     </div>
                     <div class="featured__item__text">
-                        <h6><a href="#">Crab Pool Security</a></h6>
+                        <h6><a>Crab Pool Security</a></h6>
                         <h5>$30.00</h5>
                     </div>
                 </div>
@@ -88,6 +179,5 @@
 
     </div>
 </section>
-<!-- Featured Section End -->
 
- 
+

@@ -31,7 +31,7 @@
     padding: 10px 25px 10px 10px;
     text-align: center;
     font-weight: 400;
-    font-size: 15px;
+    font-size: 15px !important;
     border-radius: 0;
     background-clip: padding-box
 }
@@ -45,7 +45,7 @@
     -webkit-background-size: 6px 30px;
     -moz-background-size: 6px 30px;
     color: #bbb;
-    font-size: 20px;
+    font-size: 20px !important;
     position: absolute;
     height: 50%;
     border: 0;
@@ -84,4 +84,64 @@
 .btn-outline-secondary:hover{
     color:white !important;
     background-color: green;
+}
+
+
+p{
+    font-size: 13px;
+}
+
+.p_img{
+    max-width: 60%;
+    margin:10px 0;
+    background-color: rgb(233,236,239);
+    padding: 2% 0;
+}
+
+img{
+    max-width: 60%;
+    display: block;
+    margin: 0 auto;
+   
+}
+
+#overlay {
+	position: fixed;
+	display: none;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-color: rgba(0,0,0,0.5);
+	z-index: 2;
+	cursor: pointer;
+  }
+  
+  #text{
+	position: absolute;
+	top: 50%;
+	left: 50%;
+    color: white;
+    padding: 2% 2% 10px 2%;
+	transform: translate(-50%,-50%);
+	-ms-transform: translate(-50%,-50%);
+  }
+
+  .remove_btn{
+      margin: 0 10% 0 0;
+      font-size: 17px;
+      padding: 2%  7%;
+  }
+  ._remove{
+    font-size: 15px;
+  }
+
+  .btn:hover{
+      opacity: .6 !important;
+  }
+
+  img:hover{
+    opacity: .6 !important;
 }

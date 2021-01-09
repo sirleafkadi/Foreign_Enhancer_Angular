@@ -1,78 +1,46 @@
+<app-nav [total]='total' ></app-nav>
+<hr>
 <div class="container" >
-    <div class="card shopping-cart" style='margin: 5% 0 !important'>
-             <div class="card-header bg-dark text-light">
+    <div class="card shopping-cart" style='margin: 3% 0 !important'>
+             <div style='background-color:rgb(70, 126, 70) !important' class="card-header bg-dark text-light">
                  <i class="fa fa-shopping-cart" aria-hidden="true"></i>
                  Shipping cart
-                 <a  class="btn btn-outline-info btn-sm pull-right">Continiu shopping</a>
+                 <a routerLink='/home' style='background-color:white; color:rgb(31, 126, 31) !important' class="btn btn-outline-info btn-sm pull-right">Continue shopping</a>
                  <div class="clearfix"></div>
              </div>
              <div class="card-body">
-                     <!-- PRODUCT -->
-                     <div class="row">
-                         <div class="col-12 col-sm-12 col-md-2 text-center">
-                                 <img class="img-responsive" src="http://placehold.it/120x80" alt="prewiew" width="120" height="80">
-                         </div>
+                     <div data-aos="fade-right" class="row" *ngFor='let p of cart'>
+                          <div class="p_img col-12 col-sm-12 col-md-2 text-center">
+                                 <img class="img-responsive" src="assets/img/products/{{p.main_img}}.jpg" alt="prewiew" width="120" height="80">
+                          </div>
                          <div class="col-12 text-sm-center col-sm-12 text-md-left col-md-6">
-                             <h4 class="product-name"><strong>Product Name</strong></h4>
+                             <h4 class="product-name"><strong>{{p.title}}</strong></h4>
                              <h4>
                                  <small>Product description</small>
+                                 <p>{{p.short_des}}</p>
                              </h4>
                          </div>
                          <div class="col-12 col-sm-12 text-sm-center col-md-4 text-md-right row">
                              <div class="col-3 col-sm-3 col-md-6 text-md-right" style="padding-top: 5px">
-                                 <h6><strong>25.00 <span class="text-muted">x</span></strong></h6>
+                                 <h6><strong>{{p.price|currency}}</strong></h6>
                              </div>
                              <div class="col-4 col-sm-4 col-md-4">
                                  <div class="quantity">
-                                     <input type="button" value="+" class="plus">
-                                     <input type="number" step="1" max="99" min="1" value="1" title="Qty" class="qty"
-                                            size="4">
-                                     <input type="button" value="-" class="minus">
+                                     <input #qt type="number" step="1" min="1"  [max]="p.quanity"  title="Qty" class="qty" value='1'   (change)='update( p._id,  qt.value)' >
                                  </div>
+                               <strong> <span class="text-muted"><br>qt: {{p.qt}}<span></span> </span> </strong> 
                              </div>
                              <div class="col-2 col-sm-2 col-md-2 text-right">
-                                 <button type="button" class="btn btn-outline-danger btn-xs">
-                                     <i class="fa fa-trash" aria-hidden="true"></i>
+                                 <button (click)='get_id(p._id)' onclick="on()"   type="button" class="btn btn-outline-danger btn-xs">
+                                     <i    class="fa fa-trash" aria-hidden="true"></i>
                                  </button>
                              </div>
                          </div>
                      </div>
                      <hr>
-                     <!-- END PRODUCT -->
-                     <!-- PRODUCT -->
-                     <div class="row">
-                         <div class="col-12 col-sm-12 col-md-2 text-center">
-                                 <img class="img-responsive" src="http://placehold.it/120x80" alt="prewiew" width="120" height="80">
-                         </div>
-                         <div class="col-12 text-sm-center col-sm-12 text-md-left col-md-6">
-                             <h4 class="product-name"><strong>Product Name</strong></h4>
-                             <h4>
-                                 <small>Product description</small>
-                             </h4>
-                         </div>
-                         <div class="col-12 col-sm-12 text-sm-center col-md-4 text-md-right row">
-                             <div class="col-3 col-sm-3 col-md-6 text-md-right" style="padding-top: 5px">
-                                 <h6><strong>25.00 <span class="text-muted">x</span></strong></h6>
-                             </div>
-                             <div class="col-4 col-sm-4 col-md-4">
-                                 <div class="quantity">
-                                     <input type="button" value="+" class="plus">
-                                     <input type="number" step="1" max="99" min="1" value="1" title="Qty" class="qty"
-                                            size="4">
-                                     <input type="button" value="-" class="minus">
-                                 </div>
-                             </div>
-                             <div class="col-2 col-sm-2 col-md-2 text-right">
-                                 <button type="button" class="btn btn-outline-danger btn-xs">
-                                     <i class="fa fa-trash" aria-hidden="true"></i>
-                                 </button>
-                             </div>
-                         </div>
-                     </div>
-                     <hr>
-                     <!-- END PRODUCT -->
+                     
                  <div class="pull-right">
-                     <a href="" class="btn btn-outline-secondary pull-right">
+                     <a (click)='refresh_cart()' class="btn btn-outline-secondary pull-right">
                          Update shopping cart
                      </a>
                  </div>
@@ -81,17 +49,17 @@
                  <div class="coupon col-md-5 col-sm-5 no-padding-left pull-left">
                      <div class="row">
                          <div class="col-6">
-                             <input type="text" class="form-control" placeholder="cupone code">
+                             <input  type="text" class="form-control" placeholder="cupone code">
                          </div>
                          <div class="col-6">
-                             <input type="submit" class="btn btn-default" value="Use cupone">
+                             <input  style='border: 1px solid green;' type="submit" class="btn btn-default" value="get cupone">
                          </div>
                      </div>
                  </div>
                  <div class="pull-right" style="margin: 10px">
                      <a style='margin:0 2px' class="btn btn-success pull-right">Checkout</a>
                      <div class="pull-right" style="margin: 5px">
-                         Total price: <b>$50.00</b>
+                         Total price: <b> {{total_price |currency}} </b>
                      </div>
                  </div>
              </div>
@@ -143,140 +111,47 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="section-title">
-                    <h2>Featured Product</h2>
+                    <h2>Explore More...</h2>
                 </div>
-                <div class="featured__controls">
-                    <ul>
-                        <li class="active" data-filter="*">All</li>
-                        <li data-filter=".oranges">Oranges</li>
-                        <li data-filter=".fresh-meat">Fresh Meat</li>
-                        <li data-filter=".vegetables">Vegetables</li>
-                        <li data-filter=".fastfood">Fastfood</li>
-                    </ul>
-                </div>
+              
             </div>
         </div>
         <div class="row featured__filter">
-            <div class="col-lg-3 col-md-4 col-sm-6 mix oranges fresh-meat">
-                <div class="featured__item">
-                    <div class="featured__item__pic set-bg" data-setbg="img/featured/feature-1.jpg">
-                        <ul class="featured__item__pic__hover">
-                            <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                            <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                            <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
+            <div data-aos="fade-up"  class="col-lg-3 col-md-4 col-sm-6 mix  fastfood vegetables" *ngFor='let list of explore_more'>
+                <div class="featured__item"  >
+                    <div  class="featured__item__pic set-bg">
+                       <a> <img  [routerLink]="['/details', list._id]" src="assets/img/products/{{list.main_img}}.jpg" alt=""> </a>
+                        <ul style='margin: -2% 0' class="featured__item__pic__hover">
+                            <!-- <medium  class='msg {{color}}'>{{msg}}</medium> -->
+                            <li title='Wish list'><a ><i class="fa fa-heart"></i></a></li>
+                            <li title='Cart'><a  ><i class="fa fa-shopping-cart"></i></a></li>
                         </ul>
                     </div>
                     <div class="featured__item__text">
-                        <h6><a href="#">Crab Pool Security</a></h6>
-                        <h5>$30.00</h5>
+                        <h6><a >{{list.title}}</a></h6>
+                        <h5>{{list.price | currency}}</h5>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-3 col-md-4 col-sm-6 mix vegetables fastfood">
-                <div class="featured__item">
-                    <div class="featured__item__pic set-bg" data-setbg="img/featured/feature-2.jpg">
-                        <ul class="featured__item__pic__hover">
-                            <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                            <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                            <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                        </ul>
-                    </div>
-                    <div class="featured__item__text">
-                        <h6><a href="#">Crab Pool Security</a></h6>
-                        <h5>$30.00</h5>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-4 col-sm-6 mix vegetables fresh-meat">
-                <div class="featured__item">
-                    <div class="featured__item__pic set-bg" data-setbg="img/featured/feature-3.jpg">
-                        <ul class="featured__item__pic__hover">
-                            <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                            <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                            <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                        </ul>
-                    </div>
-                    <div class="featured__item__text">
-                        <h6><a href="#">Crab Pool Security</a></h6>
-                        <h5>$30.00</h5>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-4 col-sm-6 mix fastfood oranges">
-                <div class="featured__item">
-                    <div class="featured__item__pic set-bg" data-setbg="img/featured/feature-4.jpg">
-                        <ul class="featured__item__pic__hover">
-                            <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                            <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                            <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                        </ul>
-                    </div>
-                    <div class="featured__item__text">
-                        <h6><a href="#">Crab Pool Security</a></h6>
-                        <h5>$30.00</h5>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-4 col-sm-6 mix fresh-meat vegetables">
-                <div class="featured__item">
-                    <div class="featured__item__pic set-bg" data-setbg="img/featured/feature-5.jpg">
-                        <ul class="featured__item__pic__hover">
-                            <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                            <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                            <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                        </ul>
-                    </div>
-                    <div class="featured__item__text">
-                        <h6><a href="#">Crab Pool Security</a></h6>
-                        <h5>$30.00</h5>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-4 col-sm-6 mix oranges fastfood">
-                <div class="featured__item">
-                    <div class="featured__item__pic set-bg" data-setbg="img/featured/feature-6.jpg">
-                        <ul class="featured__item__pic__hover">
-                            <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                            <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                            <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                        </ul>
-                    </div>
-                    <div class="featured__item__text">
-                        <h6><a href="#">Crab Pool Security</a></h6>
-                        <h5>$30.00</h5>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-4 col-sm-6 mix fresh-meat vegetables">
-                <div class="featured__item">
-                    <div class="featured__item__pic set-bg" data-setbg="img/featured/feature-7.jpg">
-                        <ul class="featured__item__pic__hover">
-                            <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                            <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                            <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                        </ul>
-                    </div>
-                    <div class="featured__item__text">
-                        <h6><a href="#">Crab Pool Security</a></h6>
-                        <h5>$30.00</h5>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-4 col-sm-6 mix fastfood vegetables">
-                <div class="featured__item">
-                    <div class="featured__item__pic set-bg" data-setbg="img/featured/feature-8.jpg">
-                        <ul class="featured__item__pic__hover">
-                            <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                            <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                            <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                        </ul>
-                    </div>
-                    <div class="featured__item__text">
-                        <h6><a href="#">Crab Pool Security</a></h6>
-                        <h5>$30.00</h5>
-                    </div>
-                </div>
-            </div>
+   
         </div>
     </div>
 </section>
+
+
+<div   id="overlay" onclick="off()">
+    <div class='row' style=' max-width: inherit !important; border: 1px rgb(106, 180, 106) solid; dispaly:flex; flex-direction: column; ' id="text">
+        <div style='max-width: inherit !important;  padding:0 8%; color:white' class='col-md-8'> <p class='_remove' style='text-align: center; color:white'>Do you want to delete?</p> </div>
+
+      <div class='col-md-4' style=' max-width: inherit !important;  display: flex; flex-direction: row; justify-content: space-between;'>
+       <button style='' class="btn-danger remove_btn  " onclick="off()">Cancell</button>
+       <button class="btn-success remove_btn"  onclick="off()"  (click)='remove()'>delete</button>
+       </div>
+
+    </div>
+  </div>
+  
+
+
+
+ 

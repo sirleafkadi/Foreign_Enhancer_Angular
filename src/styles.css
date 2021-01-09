@@ -35,6 +35,7 @@ body {
 	height: 100%;
 	font-family: "Cairo", sans-serif;
 	-webkit-font-smoothing: antialiased;
+	font-size: 15px;
 	font-smoothing: antialiased;
 	
 }
@@ -3475,3 +3476,36 @@ ol {
 		font-size: 24px;
 	}
 }
+
+@media only screen and (max-width: 600px) {
+	* {
+	  font-size: x-small !important;
+	}
+
+	.jumbotron{
+		position:relative;
+		bottom:100px;
+	}
+	.site-btn{
+		padding: 3px 8px !important ;	
+	}
+	.slide_img{
+	width: 90% !important;
+	}
+
+	.primary-btn{
+	 padding: 4px 8px !important ;		/* max-height: 50% !important; */
+	}
+	
+	.hero__item{
+		position: relative;
+		top:1px;
+	}
+	.jumbotron{
+		max-height: 95% !important;
+	}
+
+
+
+  }
+

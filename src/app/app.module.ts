@@ -23,6 +23,10 @@ import { FooterComponent } from './footer/footer.component';
 import {NgxPaginationModule} from 'ngx-pagination';
 import { ProductDetailsComponent } from './product-details/product-details.component';
 import { NgxImageZoomModule } from 'ngx-image-zoom';
+import { ShopNowComponent } from './shop-now/shop-now.component';
+import { SidebarComponent } from './sidebar/sidebar.component';
+import { TestComponent } from './test/test.component';
+import { LatestComponent } from './latest/latest.component';
 
 
 
@@ -40,8 +44,12 @@ import { NgxImageZoomModule } from 'ngx-image-zoom';
     ProductComponent,
     LoaderComponent,
     FooterComponent,
-    ProductDetailsComponent
-  ],
+    ProductDetailsComponent,
+    ShopNowComponent,
+    SidebarComponent,
+    TestComponent,
+    LatestComponent
+    ],
   imports: [
     BrowserModule,
     AppRoutingModule,

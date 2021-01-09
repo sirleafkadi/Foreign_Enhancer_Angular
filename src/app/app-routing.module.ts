@@ -7,15 +7,16 @@ import { LoginComponent } from './login/login.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { ProductDetailsComponent } from './product-details/product-details.component';
 import { ProductComponent } from './product/product.component';
+import { ShopNowComponent } from './shop-now/shop-now.component';
 
 const routes: Routes = [
   {path:'', redirectTo:'home', pathMatch:'full'},
-  {path:'cart', component:CartComponent, canActivate:[AuthguardService]},
+  {path:'cart', component:CartComponent},
   {path:'home', component:HomeComponent},
   {path:'details/:id', component:ProductDetailsComponent},
   {path:'login', component:LoginComponent},
+  {path:'shop', component:ShopNowComponent},
   {path:'**', component:NotFoundComponent}
-
 ];
 
 @NgModule({

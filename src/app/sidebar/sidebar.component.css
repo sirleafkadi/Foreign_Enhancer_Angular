@@ -49,9 +49,3 @@ a{
     cursor: pointer;
     opacity: .6;
 }
-
-sidebar{
-    border:1px solid red;
-    max-width:90%;
-}
-

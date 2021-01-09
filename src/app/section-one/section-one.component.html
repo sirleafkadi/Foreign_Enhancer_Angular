@@ -1,7 +1,7 @@
+<app-nav  [total]='total' ></app-nav>
 
-
-<section  style=' margin-bottom: 0; max-height: 55%;' class="hero container">
-    <div class="container">
+<section  style=' margin-bottom: 0; max-height: 55%;  ' class="hero container">
+    <div style='max-height: 500px;' class="container">
         <div class="row">
             <div class="col-lg-3">
                 <div class="hero__categories">
@@ -9,13 +9,17 @@
                         <i class="fa fa-bars"></i>
                         <span>{{cur_cat}}</span>
                     </div>
-                    <ul>
+                    <!-- <ul>
                         <li *ngFor='let cat of category'> 
                             <span>
                                <a class='cat_list' (click)='cur_category(cat.name)' >{{cat.name}}</a>
                             </span>
                         </li>
-                    </ul>
+                    </ul> -->
+
+                
+
+
                 </div>
             </div>
             <div class="col-lg-9">
@@ -26,7 +30,7 @@
                                 All Categories
                                 <span class="arrow_carrot-down"></span>
                             </div>
-                            <input type="text" placeholder="What do you need?">
+                            <input class='input_box' type="text" placeholder="What do you need?">
                             <button type="submit" class="site-btn">SEARCH</button>
                         </form>
                     </div>
@@ -40,20 +44,20 @@
                         </div>
                     </div>
                 </div>
-                <div style='max-height: 60%;' class="container jumbotron">
+                <div style='max-height: 60%; ' class="container jumbotron">
                          <!-- Banner -->
 
                          <div  style=' position: relative; bottom:80px  !important; ' class=" row hero__item set-bg">
                             <div class="hero__text col-md-6">
-                                <span>FRUIT FRESH</span>
-                                <h2>Vegetable <br />100% Organic</h2>
-                                <p>Free Pickup and Delivery Available</p>
-                                <a href="#" class="primary-btn">SHOP NOW</a>
+                                <span class='heading' >FRUIT FRESH</span>
+                                <h2  class='heading' >Vegetable <br />100% Organic</h2>
+                                <p  class='heading' >Free Pickup and Delivery Available</p>
+                                <a class="primary-btn" >SHOP NOW</a>
                             </div>
 
 
                             <div class="hero__text col-md-6">
-                                <img src="https://safehealth.online/wp-content/uploads/2016/09/brestrogen-top-girl-2.png" alt="">
+                                <img class='slide_img' src="https://safehealth.online/wp-content/uploads/2016/09/brestrogen-top-girl-2.png" alt="">
                             </div>
 
                         </div>
@@ -65,7 +69,10 @@
 </section>
 <!-- Hero Section End -->
 
-<product  [pro_cur_cat]='cur_cat'></product>
+
+
+
+
 
 
  

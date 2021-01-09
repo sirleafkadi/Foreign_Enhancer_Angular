@@ -12,7 +12,6 @@ export class HttpInterceptorService {
 
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>>
   {
-      console.log("Interception In Progress");
       const token:String = localStorage.getItem('token');
       req = req.clone({ headers: req.headers.set('Authorization', 'Bearer ' + token) });
       req = req.clone({ headers: req.headers.set('Content-Type', 'application/json') });

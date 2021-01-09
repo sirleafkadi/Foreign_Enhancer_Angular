@@ -1,0 +1,56 @@
+<div  class="container" >
+	<div class="row" >
+		<div  class="col-md-12">
+			<h2 id='new'> New <b style='color: rgb(127,173,57);'>Products</b></h2>
+			<div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="0">
+	
+			<!-- Wrapper for carousel items -->
+			<div  class="carousel-inner" >
+				
+				<div  class="carousel-item active" >
+					<div class="row">
+						<div  class="col-sm-3" *ngFor='let p of product'>
+							<div  class="thumb-wrapper">
+								<div  class="img-box">
+									<img src="assets/img/products/{{p.title}}/{{p.small}}.jpg" class="img-fluid" alt="{{p.title}}">
+								</div>
+								<div  class="thumb-content">
+									<h4>{{p.title|titlecase }}</h4>
+									<p class=""><strong>{{p.price|currency}}</strong></p>
+									<!-- <div class="star-rating">
+										<ul class="list-inline">
+											<li class="list-inline-item"><i class="fa fa-star"></i></li>
+											<li class="list-inline-item"><i class="fa fa-star"></i></li>
+											<li class="list-inline-item"><i class="fa fa-star"></i></li>
+											<li class="list-inline-item"><i class="fa fa-star"></i></li>
+											<li class="list-inline-item"><i class="fa fa-star-o"></i></li>
+										</ul>
+									</div> -->
+
+									<!--Message-->
+									<p id='ms' class='msg {{color}}' style='font-size: 14px;' *ngIf='p.title==cur'>{{msg}}</p>
+									<a class="btn btn-primary add" (click)='add(p)'>Add to Cart</a>
+									<a class="btn btn-primary">Save</a>
+
+								</div>						
+							</div>
+						</div>
+				
+
+
+	
+
+
+				
+
+
+						
+			
+					</div>
+				</div>
+			</div>
+	
+		</div>
+		</div>
+	</div>
+</div>

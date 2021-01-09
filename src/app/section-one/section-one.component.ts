@@ -11,7 +11,7 @@ import { ShareService } from '../share.service';
 export class SectionOneComponent implements OnInit {
 
  cur_cat:String;
-
+total:any;
   constructor(private http: HttpService, private share:ShareService) { this.cur_cat='All departments'; }
   ray:any;
  category:Array<any>;
@@ -32,7 +32,10 @@ cur_category(cat){
 }
 
 
-
+get_total(event){
+  this.total=event;
+  console.log(this.total);
+}
 
 
 

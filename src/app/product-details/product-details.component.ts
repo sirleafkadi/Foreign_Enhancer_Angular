@@ -9,17 +9,17 @@ import { ShareService } from '../share.service';
   styleUrls: ['./product-details.component.css']
 })
 export class ProductDetailsComponent implements OnInit {
-  products:Array<any>;
+  products:any;
   id:any;
   cur_img:any;
   name = 'Angular';
   myThumbnail='http://placekitten.com/200/126';
   myFullresImage='http://placekitten.com/200/126';
-  constructor(private http: HttpService, private router_activate:ActivatedRoute, private share:ShareService) {
-  }
+  constructor(private http: HttpService, private router_activate:ActivatedRoute, private share:ShareService) {}
 
  async ngOnInit(): Promise<void> {
-  await  this.get_products();
+
+  if(!this.products) await this.get_products(); 
     console.log(this.products);
     this.id= this.router_activate.snapshot.paramMap.get('id');
     this.products.forEach((p)=>{
@@ -27,18 +27,12 @@ export class ProductDetailsComponent implements OnInit {
     });
 }
 
- 
-
-cur(url){
+ cur(url){
 this.cur_img=url;
 }
 
-
-
-
 async  get_products(){
-  await this.http.get_products();
- this.products=  await this.http.products;
+  await this.http.get_products().then( (row)=>{this.products=row;}).catch( (err)=>{ console.log(err);  } );
 }
 
 
